@@ -2,9 +2,10 @@
 require("dotenv").config();
 
 // Web server config
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
+const sassMiddleware = require('./lib/sass-middleware');
+const express = require('express');
+const morgan = require('morgan');
+
 // const PORT = process.env.PORT || 8080;
 const app = express();
 
