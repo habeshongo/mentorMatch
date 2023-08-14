@@ -39,11 +39,11 @@ const addExpertise = `
   INSERT INTO mentor_exps (mentor_id, skillset, exp_description, years_of_exp) VALUES ($1, $2, $3, $4)
 `;
 
-// const updateUser = `
-//       UPDATE users
-//       SET first_name = $1, last_name = $2, email = $3, mentor_id = $4, mentee_id = $5, sub = $6
-//       WHERE id = $7
-//     `;
+const updateUser = `
+      UPDATE users
+      SET first_name = $1, last_name = $2, email = $3, profile_description = $4
+      WHERE id = $5
+    `;
 
 module.exports = {
   getUserBySub,
@@ -54,5 +54,5 @@ module.exports = {
   deleteAllExpertises,
   addInterest,
   addExpertise,
-  // updateUser,
+  updateUser,
 };

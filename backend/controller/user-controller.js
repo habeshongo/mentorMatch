@@ -1,3 +1,4 @@
+const e = require("express");
 const db = require("../db/connection");
 const usersQuery = require("../db/queries/users");
 
@@ -70,19 +71,27 @@ const updateUser = async (req, res) => {
   console.log(id, `id`);
   console.log(req.body, `changes requested`);
 
+  const updatedUser = await db.query(usersQuery.updateUser, [
+    first_name,
+    last_name,
+    email,
+    profile_description,
+    id,
+  ]);
+
   // wipe out all interests and expertises for user, adds new ones
   if (interests) {
     interests.forEach(async (interest) => {
       const { interestName, interestDescription } = interest;
       try {
-        const deletedInterests = await db.query(usersQuery.deleteAllInterests, [
-          id,
-        ]);
-        const addedInterests = await db.query(usersQuery.addInterest, [
+        const deletedInterests = db.query(usersQuery.deleteAllInterests, [id]);
+        const addedInterests = db.query(usersQuery.addInterest, [
           id,
           interestName,
           interestDescription,
         ]);
+        console.log(deletedInterests, `deletedInterests`);
+        console.log(addedInterests, `addedInterests`);
       } catch (error) {
         console.error("Error updating user:", error);
         res.status(500).json({ error: "Something went wrong" });
@@ -91,13 +100,17 @@ const updateUser = async (req, res) => {
   }
   if (expertises) {
     expertises.forEach(async (expertise) => {
-      const { skillset, expDescription, yearsOfExp } = expertise;
+      const {
+        expertiseName: skillset,
+        expertiseDescription: expDescription,
+        yearsOfExperience: yearsOfExp,
+      } = expertise;
+      console.log(skillset, expDescription, yearsOfExp, `expertise logged`);
       try {
-        const deletedExpertises = await db.query(
-          usersQuery.deleteAllExpertises,
-          [id]
-        );
-        const addedExpertises = await db.query(usersQuery.addExpertise, [
+        const deletedExpertises = db.query(usersQuery.deleteAllExpertises, [
+          id,
+        ]);
+        const addedExpertises = db.query(usersQuery.addExpertise, [
           id,
           skillset,
           expDescription,
