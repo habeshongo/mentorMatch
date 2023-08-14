@@ -19,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Separated Routes for each Resource
 const users = require("./routes/users");
-const login = require("./routes/login");
 const register = require("./routes/register");
 const connections = require("./routes/connections");
 
@@ -27,7 +26,6 @@ const connections = require("./routes/connections");
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use("/api/users", users);
 app.use("/api/connections", connections);
-app.use("/login", login);
 app.use("/register", register);
 
 // Note: mount other resources here, using the same pattern above

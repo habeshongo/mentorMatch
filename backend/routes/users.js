@@ -6,19 +6,11 @@
 
 const express = require("express");
 const router = express.Router();
-const {
-  getUserBySub,
-  addUser,
-  updateUser,
-} = require("../controller/user-controller");
+const { addUser, updateUser } = require("../controller/user-controller");
 
-router.get("/:id", getUserBySub);
-// localhost:8080/api/users/1
+router.post("/", addUser);
 
-router.post("/:id", addUser);
-// localhost:8080/api/users
-
-router.put("/:id", updateUser);
+router.patch("/:id", updateUser);
 // localhost:8080/api/users/27
 
 module.exports = router;
