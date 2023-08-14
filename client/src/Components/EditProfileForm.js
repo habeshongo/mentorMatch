@@ -1,17 +1,21 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage, FieldArray } from "formik";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import * as Yup from "yup";
 import { getProfile, updateProfile } from "../services/api";
 
 const EditProfileForm = () => {
+  const queryClient = useQueryClient();
   const { user, isLoading: isAuthLoading } = useAuth0();
 
   const mutation = useMutation({
     mutationFn: ({ id, user }) => {
       return updateProfile(data.user.id, user);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries("profile");
     },
   });
   // Queries

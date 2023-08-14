@@ -99,48 +99,45 @@ const updateUser = async (req, res) => {
   ]);
 
   // wipe out all interests and expertises for user, adds new ones
-  if (interests) {
-    interests.forEach(async (interest) => {
-      const { interestName, interestDescription } = interest;
-      try {
-        const deletedInterests = db.query(usersQuery.deleteAllInterests, [id]);
-        const addedInterests = db.query(usersQuery.addInterest, [
-          id,
-          interestName,
-          interestDescription,
-        ]);
-        console.log(deletedInterests, `deletedInterests`);
-        console.log(addedInterests, `addedInterests`);
-      } catch (error) {
-        console.error("Error updating user:", error);
-        res.status(500).json({ error: "Something went wrong" });
-      }
-    });
+  const deletedInterests = await db.query(usersQuery.deleteAllInterests, [id]);
+  for (const interest of interests) {
+    const { interestName, interestDescription } = interest;
+    try {
+      const addedInterests = await db.query(usersQuery.addInterest, [
+        id,
+        interestName,
+        interestDescription,
+      ]);
+      console.log(deletedInterests, `deletedInterests`);
+      console.log(addedInterests, `addedInterests`);
+    } catch (error) {
+      console.error("Error updating user:", error);
+      res.status(500).json({ error: "Something went wrong" });
+    }
   }
-  if (expertises) {
-    expertises.forEach(async (expertise) => {
-      const {
-        expertiseName: skillset,
-        expertiseDescription: expDescription,
-        yearsOfExperience: yearsOfExp,
-      } = expertise;
-      console.log(skillset, expDescription, yearsOfExp, `expertise logged`);
-      try {
-        const deletedExpertises = db.query(usersQuery.deleteAllExpertises, [
-          id,
-        ]);
-        const addedExpertises = db.query(usersQuery.addExpertise, [
-          id,
-          skillset,
-          expDescription,
-          yearsOfExp,
-        ]);
-      } catch (error) {
-        console.error("Error updating user:", error);
-        res.status(500).json({ error: "Something went wrong" });
-      }
-    });
+  const deletedExpertises = await db.query(usersQuery.deleteAllExpertises, [
+    id,
+  ]);
+  for (const expertise of expertises) {
+    const {
+      expertiseName: skillset,
+      expertiseDescription: expDescription,
+      yearsOfExperience: yearsOfExp,
+    } = expertise;
+    // console.log(skillset, expDescription, yearsOfExp, `expertise logged`);
+    try {
+      const addedExpertises = await db.query(usersQuery.addExpertise, [
+        id,
+        skillset,
+        expDescription,
+        yearsOfExp,
+      ]);
+    } catch (error) {
+      // console.error("Error updating user:", error);
+      res.status(500).json({ error: "Something went wrong" });
+    }
   }
+
   res.status(200).json({ message: "User updated successfully" });
   // try {
 
