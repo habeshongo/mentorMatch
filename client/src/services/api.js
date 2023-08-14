@@ -18,7 +18,9 @@ export const updateProfile = async (id, user) => {
 
 export const getProfile = async (user) => {
   //use axios to make get request
+  console.log(user);
   const response = await apiClient.post("/api/users", user);
+
   return response.data;
 };
 

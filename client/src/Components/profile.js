@@ -21,10 +21,10 @@ const Profile = () => {
 
   return (
     <>
-      {isAuthenticated && !isLoading && (
+      {data && user && data.user && !isLoading && (
         <div>
-          <img src={data.user?.picture} alt={data?.user.name} />
-          <h2>{data.user?.name}</h2>
+          <img src={data.user.picture} alt={data.user.name} />
+          <h2>{data.user.name}</h2>
           <p>{data.user.email}</p>
           <AshtonProfile
             expertises={data.user.mentorProfile}

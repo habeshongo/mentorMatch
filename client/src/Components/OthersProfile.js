@@ -25,7 +25,7 @@ const OthersProfile = () => {
             Connect
           </Button>
         </Box>
-        {!isLoading && (
+        {data && !isLoading && (
           <AshtonProfile
             expertises={data.user.mentorProfile}
             interests={data.user.menteeProfile}

@@ -10,12 +10,12 @@ const addUser = async (req, res) => {
     sub,
     picture,
   } = req.body;
-  console.log(req.body, `req.body`);
+  // console.log(req.body, `req.body`);
   //check if user exists using sub, returns user if exists
   try {
     const { rows } = await db.query(usersQuery.getUserBySub, [sub]);
     const user = rows[0];
-    console.log(user, `user after getUserBySub query`);
+    // console.log(user, `user after getUserBySub query`);
     if (user) {
       // query to get mentee profile and associated mentee interests,currently using req.params.id, needs to chain from user profile
       const { rows: menteeProfile } = await db.query(
@@ -32,7 +32,7 @@ const addUser = async (req, res) => {
       // console.log(mentorProfile, `mentorProfile`);
       // final logic to combine all profiles into one object
       user.mentorProfile = mentorProfile;
-      console.dir(user, { depth: null }, `userProfile`);
+      // console.dir(user, { depth: null }, `userProfile`);
       return res.json({ user });
     }
 
@@ -43,13 +43,32 @@ const addUser = async (req, res) => {
       sub,
       picture,
     ]);
-    console.log(result, `result`);
-    const mentee_id = await db.query(usersQuery.createMentorProfile, [
-      result.rows[0].id,
-    ]);
-    console.log(mentee_id, `mentee_id`);
+    const newUser = result.rows[0];
+    console.log(newUser, `result`);
+    //create sendbird user
 
+    const sendbirdRes = await fetch(
+      `https://api-${process.env.SENDBIRD_APP_ID}.sendbird.com/v3/users`,
+      {
+        method: "POST",
+        headers: {
+          "Api-Token": process.env.SENDBIRD_API_TOKEN,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: newUser.id,
+          nickname: `${newUser.first_name} ${newUser.last_name}`,
+          profile_url: "",
+        }),
+      }
+    );
+    if (!sendbirdRes.ok) {
+      console.log(await sendbirdRes.text(), `sendbirdRes`);
+      throw new Error(sendbirdRes);
+    }
+    const sendbirdUser = await sendbirdRes.json();
     // return res.json({ user: result.rows[0] });
+    console.log(sendbirdUser, `sendbirdUser`);
     return res.json(user);
   } catch (error) {
     console.error("Error updating user:", error);

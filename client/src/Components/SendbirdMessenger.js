@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Channel, ChannelList, ChannelSettings } from "@sendbird/uikit-react";
 
-const CustomizedApp = () => {
+const SendbirdMessenger = () => {
   const [currentChannel, setCurrentChannel] = React.useState(null);
   const currentChannelUrl = currentChannel ? currentChannel.url : "";
   const [showSettings, setShowSettings] = React.useState(false);
@@ -50,4 +50,4 @@ const CustomizedApp = () => {
   );
 };
 
-export default CustomizedApp;
+export default SendbirdMessenger;

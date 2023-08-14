@@ -26,7 +26,6 @@ const Home = () => {
         ) : (
           <LogoutButton />
         )}
-        <button onClick={() => handleRedirectCallback()}>test button</button>
       </div>
     </section>
   );

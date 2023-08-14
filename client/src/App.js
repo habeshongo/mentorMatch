@@ -13,7 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
 
 import SendbirdProvider from "./Components/SendbirdProvider";
-import SendbirdMessnger from "./Components/SendbirdMessenger";
+import SendbirdMessenger from "./Components/SendbirdMessenger";
 
 import Connects from "./Components/Connects";
 import OthersProfile from "./Components/OthersProfile";
@@ -29,7 +29,6 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Auth0ProviderWithNavigate>
-            {/* <SendbirdProvider> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/logout" element={<LogoutButton />} />
@@ -39,10 +38,15 @@ function App() {
               <Route path="/connections" element={<Connects />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/messages" element={<Messages />} />
-              <Route path="/messenger" element={<SendbirdMessnger />} />
-              <Route path="/test" element={<AshtonProfile />} />
+              <Route
+                path="/test"
+                element={
+                  <SendbirdProvider>
+                    <SendbirdMessenger />
+                  </SendbirdProvider>
+                }
+              />
             </Routes>
-            {/* </SendbirdProvider> */}
           </Auth0ProviderWithNavigate>
         </BrowserRouter>
       </QueryClientProvider>

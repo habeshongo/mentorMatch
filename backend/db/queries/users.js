@@ -21,7 +21,7 @@ WHERE users.id = $1;
 `;
 
 const addUser =
-  "INSERT INTO users (first_name, last_name, email, sub, picture) VALUES ($1, $2, $3, $4, $5)";
+  "INSERT INTO users (first_name, last_name, email, sub, picture) VALUES ($1, $2, $3, $4, $5) RETURNING id, email, first_name, last_name, sub, picture";
 
 const deleteAllInterests = `
 DELETE FROM mentees_interests
