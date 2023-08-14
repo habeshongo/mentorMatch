@@ -11,8 +11,6 @@ export const register = async (user) => {
   return response.data;
 };
 
-export const getConnections = () => {};
-
 export const updateProfile = async (id, user) => {
   const response = await apiClient.patch("/api/users/" + id, user);
   return response.data;
@@ -21,5 +19,15 @@ export const updateProfile = async (id, user) => {
 export const getProfile = async (user) => {
   //use axios to make get request
   const response = await apiClient.post("/api/users", user);
+  return response.data;
+};
+
+export const getConnections = async (user) => {
+  const response = await apiClient.post("/api/connections", user);
+  return response.data;
+};
+
+export const getProfileById = async (id) => {
+  const response = await apiClient.get("/api/users/" + id);
   return response.data;
 };

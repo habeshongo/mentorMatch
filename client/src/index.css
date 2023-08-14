@@ -20,3 +20,16 @@ body {
   .view-mentor {
     margin-top: 20px;
   }
+
+  .channel-wrap {
+    display: flex;
+    height: 100%;
+  }
+
+  .channel-list {
+    float: left;
+  }
+
+  .channel-chat{
+    width:76%;
+  }

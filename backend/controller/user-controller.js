@@ -132,4 +132,35 @@ const updateUser = async (req, res) => {
   // }
 };
 
-module.exports = { addUser, updateUser };
+const getProfileById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { rows } = await db.query(usersQuery.getUserById, [id]);
+    const user = rows[0];
+    console.log(user, `user after getUserById query`);
+    if (user) {
+      // query to get mentee profile and associated mentee interests,currently using req.params.id, needs to chain from user profile
+      const { rows: menteeProfile } = await db.query(
+        usersQuery.getMenteeProfileById,
+        [user.id]
+      );
+      // console.log(menteeProfile, `menteeProfile`);
+      user.menteeProfile = menteeProfile;
+      // query to get mentor profile and associated mentor interests, currently using req.params.id, needs to chain from user profile
+      const { rows: mentorProfile } = await db.query(
+        usersQuery.getMentorProfileById,
+        [user.id]
+      );
+      // console.log(mentorProfile, `mentorProfile`);
+      // final logic to combine all profiles into one object
+      user.mentorProfile = mentorProfile;
+      console.dir(user, { depth: null }, `userProfile`);
+      return res.json({ user });
+    }
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+module.exports = { addUser, updateUser, getProfileById };

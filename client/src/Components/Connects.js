@@ -1,47 +1,56 @@
 // HeroSection.js
-import React from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import ConnectCard from './ConnectCard';
-import pic from '../assets/images/test-photo.jpg'
+import React from "react";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import ConnectCard from "./ConnectCard";
+import pic from "../assets/images/test-photo.jpg";
+import { getConnections } from "../services/api";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+
 const ConnectionsSection = () => {
-    return (
-        <Container>
-            <div>
-                <Typography variant="h4" component="h1">
-                    Connections
-                </Typography>
+  const { user, isLoading: isAuthLoading } = useAuth0();
 
-            </div>
+  console.log(user, `user @ connections component`);
+  // Queries
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["connections"],
+    queryFn: () => getConnections(user),
+    enabled: !!user,
+  });
 
+  return (
+    <Container>
+      <div>
+        <Typography variant="h4" component="h1">
+          Connections
+        </Typography>
+      </div>
 
-            <div className='view-mentor'>
-
-                <div>
-
-                    <Typography variant="subtitle1" color="textSecondary">
-                        All of your connections are displayed here.
-                    </Typography>
-                </div>
-                <Grid container spacing={3} alignItems="center">
-                    <Grid item xs={3}>
-                        <ConnectCard imageSrc={pic} title="Test Name" />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <ConnectCard imageSrc={pic} title="Test Name" />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <ConnectCard imageSrc={pic} title="Test Name" />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <ConnectCard imageSrc={pic} title="Test Name" />
-                    </Grid>
-
+      <div className="view-mentor">
+        <div>
+          <Typography variant="subtitle1" color="textSecondary">
+            All of your connections are displayed here.
+          </Typography>
+        </div>
+        <Grid container spacing={3} alignItems="center">
+          {!isLoading &&
+            data.connections.map((connection) => {
+              return (
+                <Grid item xs={3}>
+                  <ConnectCard
+                    imageSrc={connection.picture}
+                    title={`${connection.first_name} ${connection.last_name}`}
+                  />
                 </Grid>
-            </div>
-        </Container>
-    );
+              );
+            })}
+        </Grid>
+      </div>
+    </Container>
+  );
 };
 
 export default ConnectionsSection;

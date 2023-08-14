@@ -1,4 +1,5 @@
 const getUserBySub = "SELECT * FROM users WHERE sub = $1";
+const getUserById = "SELECT * FROM users WHERE id = $1";
 
 // const getMenteeProfileById = `
 // SELECT * FROM mentees
@@ -45,8 +46,15 @@ const updateUser = `
       WHERE id = $5
     `;
 
+const getAllUsersByIDArray = `
+      SELECT *
+      FROM users
+      WHERE id = ANY($1)
+`;
+
 module.exports = {
   getUserBySub,
+  getUserById,
   getMenteeProfileById,
   getMentorProfileById,
   addUser,
@@ -55,4 +63,5 @@ module.exports = {
   addInterest,
   addExpertise,
   updateUser,
+  getAllUsersByIDArray,
 };

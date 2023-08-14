@@ -4,7 +4,7 @@ import React from 'react'
 import avatar from '../assets/images/test-photo.jpg'
 import { Link } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = ({picture, name, expertises, interests, description}) => {
  
   return (
     <Box sx={{bgcolor:'gray', height: '100vh', width: '100%'}}>
@@ -13,15 +13,13 @@ const Profile = () => {
         <Box display='flex' justifyContent="space-between" alignItems="center" sx={{ p:"16px"}}>
           <Box display="flex" gap={4} sx={{  p: 4}}>
         
-          <Avatar src={avatar} variant ='circular' alt="avatar"  sx={{width:"150px", height:"150px"}}/>
-          <Typography variant='h3' alignSelf="end">Emily Lee</Typography>
+          <Avatar src={picture} variant ='circular' alt="avatar"  sx={{width:"150px", height:"150px"}}/>
+          <Typography variant='h3' alignSelf="end">{name}</Typography>
 
           </Box>
           
        
-        <Box>
-          <Button color='secondary' variant='contained' alignSelf="end">Connect</Button>
-        </Box>
+       
         </Box>
 
         <Box display='flex' gap={4}>
@@ -29,24 +27,32 @@ const Profile = () => {
             <Box sx={{bgcolor:'lightgray', borderRadius:'10px', p:'20px'}}>
               <Typography variant='h4' sx={{mb:"16px"}}>About Me</Typography>
               <Typography>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aliquam necessitatibus laboriosam consequuntur ea cum aspernatur quisquam a similique quia?
+                {description}
               </Typography>
             </Box>
             <Box sx={{bgcolor:'lightgray', borderRadius:'10px', p:'20px'}}>
               <Box  >
                 <Typography variant='h4'  sx={{mb:"16px"}}>Interests</Typography>
-                <Typography sx={{mb:"12px"}}>Software Development</Typography>
-                <Typography>I have a 1 million dollar idea on how to overtake Facebook.</Typography>
-                <Box sx={{my:'16px'}}>
-                <Typography sx={{mb:'12px'}}>Woodworking</Typography>
-                <Typography>Looking to build the next big site.</Typography>
+                {
+                  interests.map((interest, index) => {
+                    return (
+                      <Box key={index}>
+                        <Typography sx={{mb:"12px"}}>{interest.name_of_subject}</Typography>
+                        <Typography>{interest.subject_description}</Typography>
+                      </Box>
+                    )
+                  })
+                }
                 </Box>
-              </Box>
+                {/* // <Typography sx={{mb:"12px"}}>Software Development</Typography>
+                // <Typography>I have a 1 million dollar idea on how to overtake Facebook.</Typography>
+                // <Box sx={{my:'16px'}}>
+                // <Typography sx={{mb:'12px'}}>Woodworking</Typography>
+                // <Typography>Looking to build the next big site.</Typography>
+                // </Box> */}
+                
              
-              <Link to="/edit-profile">
-              <Button variant='outlined' sx={{my:"20px"}}>Edit
-              </Button>
-              </Link>
+            
             
             
             </Box>
@@ -55,7 +61,17 @@ const Profile = () => {
             <Typography variant='h4' sx={{mb:"16px"}}>Expertise</Typography>
 
             <Box display='flex' flexDirection='column' gap={4}>
-            <Box>
+              {
+                expertises.length > 0 && expertises.map((expertise, index) => {
+                  return (
+                    <Box key={index}>
+                      <Typography sx={{mb:"12px"}}>{expertise.skillset}, {expertise.years_of_exp} years of experience</Typography>
+                      <Typography>{expertise.exp_description}</Typography>
+                    </Box>
+                  )
+                })
+              }
+            {/* <Box>
               <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
               <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus m?</Typography>
             </Box>
@@ -68,12 +84,12 @@ const Profile = () => {
             <Box>
               <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
               <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus molestiae dolores delectus enim?</Typography>
-            </Box>
-
+            </Box> */}
+{/* 
             <Box>
               <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
               <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus molestiae dolores delectus enim?</Typography>
-            </Box>
+            </Box> */}
             </Box>
           </Box>
         </Box>

@@ -1,6 +1,6 @@
 const getConnections = `
   SELECT * FROM connections 
-  WHERE mentor_id = $1 OR mentee_id = $1;
+  WHERE requestor = $1 OR requestee = $1;
   `;
 
 module.exports = {
