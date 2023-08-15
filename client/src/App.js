@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./Components/home";
+import "./Components/sidebar.css";
+import Home from "./pages/Home";
 import LoginButton from "./Components/login";
 import LogoutButton from "./Components/logout";
 import Profile from "./Components/profile";
@@ -25,7 +26,7 @@ const queryClient = new QueryClient();
 // Provide the client to your App
 function App() {
   return (
-    <div className="App">
+    <div className="App right-block">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Auth0ProviderWithNavigate>

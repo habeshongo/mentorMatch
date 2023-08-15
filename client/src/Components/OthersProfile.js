@@ -1,4 +1,5 @@
 import React from "react";
+import NavBar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getProfileById } from "../services/api";
@@ -18,13 +19,14 @@ const OthersProfile = () => {
 
   return (
     <div>
+      <NavBar />
       {isLoading ? <div>Loading...</div> : <div></div>}
       <div className="section">
-        <Box>
+        {/* <Box>
           <Button color="secondary" variant="contained">
             Connect
           </Button>
-        </Box>
+        </Box> */}
         {data && !isLoading && (
           <AshtonProfile
             expertises={data.user.mentorProfile}

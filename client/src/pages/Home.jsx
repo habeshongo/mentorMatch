@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import NavBar from '../Components/Navbar';
+import LoginButton from '../Components/login';
+import { SignupButton } from '../Components/signup';
+
 
 import { Button, TextField } from '@mui/material';
 const Home = () => {
@@ -32,6 +36,7 @@ setInput({
 
   return (
     <div>
+      <NavBar />
       <form onSubmit={handleSubmit}>
         <Box display='flex' flexDirection={"column"} maxWidth={400} justifyItems="center" alignItems={'center'} margin="auto" borderRadius={6} marginTop={6} padding={3} boxShadow={"5px 5px 10px #ccc"} >
         <Typography variant='h2' padding={3} textAlign="center">{isSignup ? 'Signup': 'Login'}</Typography>
@@ -46,9 +51,9 @@ setInput({
         }}}/> 
        <Button type='submit' sx={{ marginTop: 4 }} variant="contained" color="warning">
        
-{isSignup ?"Signup": "Login"}
+{isSignup ? <SignupButton />: <LoginButton />}
 </Button>
-<Button onClick ={()=>setIsSignup(!isSignup)} sx={{ marginTop: 4 }}>Change to {isSignup ? 'Login' : 'Signup'}</Button>
+{/* <Button onClick ={()=>setIsSignup(!isSignup)} sx={{ marginTop: 4 }}>Go to {isSignup ? 'Login' : 'Signup'}</Button> */}
        
         </Box>
       </form>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from "./Navbar";
 import { Channel, ChannelList, ChannelSettings } from "@sendbird/uikit-react";
 
 const SendbirdMessenger = () => {
@@ -18,6 +19,8 @@ const SendbirdMessenger = () => {
     channelChatDiv.style.cssFloat = "none";
   };
   return (
+    <div>
+      <NavBar /> 
     <div className="channel-wrap">
       <div className="channel-list">
         <ChannelList
@@ -47,7 +50,8 @@ const SendbirdMessenger = () => {
         </div>
       )}
     </div>
-  );
-};
+    
+      </div> 
+)};
 
 export default SendbirdMessenger;

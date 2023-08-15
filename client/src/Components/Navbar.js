@@ -9,26 +9,28 @@ const NavBar = () => {
         <AppBar position="static" sx={{ backgroundColor: '#333' }}>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Mentor Match
+                    <Link to="/connections" style={{ textDecoration: 'none' }}>
+                    <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Mentor Match</Button>
+                </Link>
                 </Typography>
 
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Home</Button>
                 </Link>
 
-                <Link to="/users" style={{ textDecoration: 'none' }}>
-                    <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Users</Button>
-                </Link>
 
-                <Link to="/user" style={{ textDecoration: 'none' }}>
+                <Link to="/profile" style={{ textDecoration: 'none' }}>
                     <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Profile</Button>
                 </Link>
 
-                <Link to="/connection" style={{ textDecoration: 'none' }}>
+                <Link to="/connections" style={{ textDecoration: 'none' }}>
                     <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Connections</Button>
                 </Link>
+                <Link to="/edit" style={{ textDecoration: 'none' }}>
+                    <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Edit Profile</Button>
+                </Link>
 
-                <Link to="/message" style={{ textDecoration: 'none' }}>
+                <Link to="/chat" style={{ textDecoration: 'none' }}>
                     <Button color="inherit" sx={{ color: 'white', fontWeight: 'bold' }}>Messages</Button>
                 </Link>
 
