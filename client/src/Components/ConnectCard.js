@@ -6,7 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-const ConnectCard = ({ imageSrc, title, onConfirm, onHide, onDelete }) => {
+const ConnectCard = ({ imageSrc, title, onHide, id }) => {
+  console.log(id, `id @ connect card`);
   return (
     <Card>
       <CardMedia
@@ -20,7 +21,7 @@ const ConnectCard = ({ imageSrc, title, onConfirm, onHide, onDelete }) => {
           {title}
         </Typography>
 
-        <Link to="/profile">
+        <Link to={`/profile/${id}`}>
           <Button
             variant="outlined"
             color="secondary"
@@ -34,18 +35,6 @@ const ConnectCard = ({ imageSrc, title, onConfirm, onHide, onDelete }) => {
             Profile
           </Button>
         </Link>
-
-        <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
-          <Button variant="contained" color="error" onClick={onDelete}>
-            Delete
-          </Button>
-
-          <Link to="/message">
-            <Button variant="outlined" color="secondary" onClick={onHide}>
-              Message
-            </Button>
-          </Link>
-        </div>
       </CardContent>
     </Card>
   );

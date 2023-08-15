@@ -43,6 +43,7 @@ const ConnectionsSection = () => {
                   <ConnectCard
                     imageSrc={connection.picture}
                     title={`${connection.first_name} ${connection.last_name}`}
+                    id={connection.id}
                   />
                 </Grid>
               );

@@ -39,7 +39,7 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/messages" element={<Messages />} />
               <Route
-                path="/test"
+                path="/chat"
                 element={
                   <SendbirdProvider>
                     <SendbirdMessenger />

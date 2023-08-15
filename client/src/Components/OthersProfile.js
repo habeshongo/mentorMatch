@@ -21,7 +21,7 @@ const OthersProfile = () => {
       {isLoading ? <div>Loading...</div> : <div></div>}
       <div className="section">
         <Box>
-          <Button color="secondary" variant="contained" alignSelf="end">
+          <Button color="secondary" variant="contained">
             Connect
           </Button>
         </Box>
