@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import EditProfileForm from "./EditProfileForm";
+import { Button, TextField } from "@mui/material";
 
 export const SignupButton = () => {
   const { loginWithRedirect } = useAuth0();
@@ -8,7 +9,7 @@ export const SignupButton = () => {
   const handleSignUp = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/edit",
+        returnTo: "/profile",
       },
       authorizationParams: {
         screen_hint: "signup",
@@ -17,8 +18,17 @@ export const SignupButton = () => {
   };
 
   return (
-    <button className="button__sign-up" onClick={handleSignUp}>
+    <Button
+      type="submit"
+      sx={{ marginTop: 4 }}
+      variant="contained"
+      color="warning"
+      onClick={handleSignUp}
+    >
       Sign Up
-    </button>
+    </Button>
+    // <button className="button__sign-up"
+    //   Sign Up
+    // </button>
   );
 };
