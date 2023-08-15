@@ -33,3 +33,8 @@ body {
   .channel-chat{
     width:76%;
   }
+
+  .app{
+    height: 100vh;
+    
+  }
