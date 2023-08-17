@@ -23,36 +23,39 @@ const ConnectionsSection = () => {
   });
 
   return (
-    <Container>
+    <>
       <NavBar />
-      <div>
-        <Typography variant="h4" component="h1">
-          Connections
-        </Typography>
-      </div>
-
-      <div className="view-mentor">
+      <Container>
         <div>
-          <Typography variant="subtitle1" color="textSecondary">
-            All of your connections are displayed here.
+          <Typography variant="h4" component="h1">
+            Mentors
           </Typography>
         </div>
-        <Grid container spacing={3} alignItems="center">
-          {!isLoading &&
-            data.connections.map((connection) => {
-              return (
-                <Grid item xs={3}>
-                  <ConnectCard
-                    imageSrc={connection.picture}
-                    title={`${connection.first_name} ${connection.last_name}`}
-                    id={connection.id}
-                  />
-                </Grid>
-              );
-            })}
-        </Grid>
-      </div>
-    </Container>
+
+        <div className="view-mentor">
+          <div>
+            <Typography variant="subtitle1" color="textSecondary">
+              MentorMatch mentors can be found below. Click on a mentor to view
+              their profile.
+            </Typography>
+          </div>
+          <Grid container spacing={3} alignItems="center">
+            {!isLoading &&
+              data.connections.map((connection) => {
+                return (
+                  <Grid item xs={3}>
+                    <ConnectCard
+                      imageSrc={connection.picture}
+                      title={`${connection.first_name} ${connection.last_name}`}
+                      id={connection.id}
+                    />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </div>
+      </Container>
+    </>
   );
 };
 

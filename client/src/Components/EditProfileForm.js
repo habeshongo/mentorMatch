@@ -107,6 +107,7 @@ const EditProfileForm = () => {
             if (!data) return;
             console.log(values);
             mutation.mutate({ id: data.user.id, user: values });
+
             // setTimeout(() => {
             //   console.log(JSON.stringify(values, null, 2));
             //   setSubmitting(false);

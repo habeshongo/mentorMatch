@@ -45,7 +45,7 @@ setInput({
       <NavBar />
       {/* <form onSubmit={handleSubmit}> */}
         <Box display='flex' flexDirection={"column"} maxWidth={400} justifyItems="center" alignItems={'center'} margin="auto" borderRadius={6} marginTop={6} padding={3} boxShadow={"5px 5px 10px #ccc"} >
-        <Typography variant='h2' padding={3} textAlign="center">{isSignup ? 'Signup': 'Login'}</Typography>
+        <Typography variant='h2' padding={3} textAlign="center">{!user ? 'Login': 'Logout'}</Typography>
         {/* {isSignup && <TextField onChange={handleChange} value={input.name} margin='normal' name="name" type="text" variant='outlined' placeholder='Name' padding={3} sx={{":hover": {
           boxShadow:"5px 5px 10px #ccc"
         }}}/>}

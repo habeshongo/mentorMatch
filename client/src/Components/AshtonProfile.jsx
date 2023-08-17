@@ -36,10 +36,13 @@ const Profile = ({picture, name, expertises, interests, description}) => {
                 {
                   interests.map((interest, index) => {
                     return (
-                      <Box key={index}>
+                      <>
+                      <Box key={index} >
                         <Typography sx={{mb:"12px"}}>{interest.name_of_subject}</Typography>
                         <Typography>{interest.subject_description}</Typography>
                       </Box>
+                      <br/>
+                      </>
                     )
                   })
                 }
