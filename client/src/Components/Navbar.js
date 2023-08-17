@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./Navbar.css";
 
 const NavBar = () => {
   const { user, isLoading: isAuthLoading } = useAuth0();
@@ -14,7 +15,13 @@ const NavBar = () => {
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/connections" style={{ textDecoration: "none" }}>
-            <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
+            <Button
+              color="inherit"
+              sx={{
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
               <div
                 style={{ color: "#ff9c00", fontWeight: "700", fontSize: "2em" }}
               >
@@ -25,34 +32,65 @@ const NavBar = () => {
           </Link>
         </Typography>
 
-        <Link to="/" style={{ textDecoration: "none" }}>
+        {/* <Link to="/" style={{ textDecoration: "none" }}>
           <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
             Home
           </Button>
-        </Link>
+        </Link> */}
 
         <Link to="/profile" style={{ textDecoration: "none" }}>
-          <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+            }}
+            className="nav-button-hover"
+          >
             Profile
           </Button>
         </Link>
 
         <Link to="/connections" style={{ textDecoration: "none" }}>
-          <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              marginLeft: ".5em",
+            }}
+            className="nav-button-hover"
+          >
             Mentors
           </Button>
         </Link>
 
         {user && (
           <Link to="/edit" style={{ textDecoration: "none" }}>
-            <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
+            <Button
+              color="inherit"
+              sx={{
+                color: "white",
+                fontWeight: "bold",
+                marginLeft: ".5em",
+              }}
+              className="nav-button-hover"
+            >
               Edit Profile
             </Button>
           </Link>
         )}
 
         <Link to="/chat" style={{ textDecoration: "none" }}>
-          <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              marginLeft: ".5em",
+            }}
+            className="nav-button-hover"
+          >
             Messages
           </Button>
         </Link>

@@ -30,17 +30,8 @@ const Profile = () => {
     !isLoading && (
       <div style={{ minHeight: "100vh" }}>
         <NavBar />
-        <div className="sidebar-layout">
-          <div className="sidebar">
-            <img src={data.user.picture} alt={data.user.name} />
-            <h2>{data.user.name}</h2>
-            <p>{data.user.email}</p>
-            <Link to="/edit">
-              <Button variant="contained" color="secondary">
-                Edit Profile
-              </Button>
-            </Link>
-          </div>
+
+        <div style={{ alignSelf: "center" }}>
           <AshtonProfile
             expertises={data.user.mentorProfile}
             interests={data.user.menteeProfile}
