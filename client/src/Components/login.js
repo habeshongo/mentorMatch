@@ -18,7 +18,7 @@ const LoginButton = () => {
   return (
     <Button
       type="submit"
-      sx={{ marginTop: 4 }}
+      sx={{ marginTop: 2 }}
       variant="contained"
       color="warning"
       onClick={handleLogin}

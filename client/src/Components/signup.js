@@ -20,12 +20,12 @@ export const SignupButton = () => {
   return (
     <Button
       type="submit"
-      sx={{ marginTop: 4 }}
+      sx={{ marginTop: 2, backgroundColor: "#42b72a" }}
       variant="contained"
-      color="warning"
+      color="success"
       onClick={handleSignUp}
     >
-      Sign Up
+      Create New Account
     </Button>
     // <button className="button__sign-up"
     //   Sign Up
