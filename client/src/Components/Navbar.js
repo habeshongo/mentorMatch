@@ -15,7 +15,12 @@ const NavBar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/connections" style={{ textDecoration: "none" }}>
             <Button color="inherit" sx={{ color: "white", fontWeight: "bold" }}>
-              Mentor Match
+              <div
+                style={{ color: "#ff9c00", fontWeight: "700", fontSize: "2em" }}
+              >
+                Mentor
+              </div>
+              <div style={{ fontWeight: "700", fontSize: "2em" }}>Match</div>
             </Button>
           </Link>
         </Typography>

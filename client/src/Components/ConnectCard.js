@@ -17,20 +17,30 @@ const ConnectCard = ({ imageSrc, title, onHide, id }) => {
         alt="Card Image"
       />
       <CardContent>
-        <Typography variant="h6" component="h2">
+        <p
+          //   variant="h6"
+          //   component="h2"
+          style={{
+            display: "block",
+            margin: "0 auto",
+            color: "black",
+            paddingBottom: "0.5em",
+          }}
+        >
           {title}
-        </Typography>
+        </p>
 
         <Link to={`/profile/${id}`}>
           <Button
             variant="outlined"
-            color="secondary"
             onClick={onHide}
             style={{
-              backgroundColor: "#808080",
+              backgroundColor: "#ff9c00",
               color: "#ffffff",
               border: "none",
+              width: "100%",
             }}
+            alignContent="stretch"
           >
             Profile
           </Button>

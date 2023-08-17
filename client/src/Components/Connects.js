@@ -25,7 +25,7 @@ const ConnectionsSection = () => {
   return (
     <>
       <NavBar />
-      <Container>
+      <Container style={{ maxWidth: "1024px", marginTop: "3em" }}>
         <div>
           <Typography variant="h4" component="h1">
             Mentors
@@ -34,7 +34,11 @@ const ConnectionsSection = () => {
 
         <div className="view-mentor">
           <div>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography
+              variant="subtitle1"
+              color="textSecondary"
+              style={{ marginBottom: "1em" }}
+            >
               MentorMatch mentors can be found below. Click on a mentor to view
               their profile.
             </Typography>

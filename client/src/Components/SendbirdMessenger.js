@@ -20,38 +20,38 @@ const SendbirdMessenger = () => {
   };
   return (
     <div>
-      <NavBar /> 
-    <div className="channel-wrap">
-      <div className="channel-list">
-        <ChannelList
-          onChannelSelect={(channel) => {
-            setCurrentChannel(channel);
-          }}
-        />
-      </div>
-      <div className="channel-chat">
-        <Channel
-          channelUrl={currentChannelUrl}
-          onChatHeaderActionClick={() => {
-            setShowSettings(!showSettings);
-            renderSettingsBar();
-          }}
-        />
-      </div>
-      {showSettings && (
-        <div className="channel-settings">
-          <ChannelSettings
-            channelUrl={currentChannelUrl}
-            onCloseClick={() => {
-              setShowSettings(false);
-              hideSettingsBar();
+      <NavBar />
+      <div className="channel-wrap" style={{ minHeight: "calc(100vh - 64px)" }}>
+        <div className="channel-list">
+          <ChannelList
+            onChannelSelect={(channel) => {
+              setCurrentChannel(channel);
             }}
           />
         </div>
-      )}
+        <div className="channel-chat">
+          <Channel
+            channelUrl={currentChannelUrl}
+            onChatHeaderActionClick={() => {
+              setShowSettings(!showSettings);
+              renderSettingsBar();
+            }}
+          />
+        </div>
+        {showSettings && (
+          <div className="channel-settings">
+            <ChannelSettings
+              channelUrl={currentChannelUrl}
+              onCloseClick={() => {
+                setShowSettings(false);
+                hideSettingsBar();
+              }}
+            />
+          </div>
+        )}
+      </div>
     </div>
-    
-      </div> 
-)};
+  );
+};
 
 export default SendbirdMessenger;
