@@ -40,6 +40,7 @@ const EditProfileForm = () => {
     <>
       <Navbar />
       <div style={{ maxWidth: "1024px", margin: "0 auto", paddingTop: "2em" }}>
+        <h2>Update your profile:</h2>
         <Formik
           initialValues={{
             firstName: data.user.first_name || "",
