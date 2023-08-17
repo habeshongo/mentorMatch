@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Profile = ({picture, name, expertises, interests, description}) => {
  
   return (
-    <Box sx={{bgcolor:'gray', height: '100vh', width: '100%'}}>
+    <div sx={{bgcolor:'#f5f5f5', minheight: '100vh', width: '100%'}}>
       <Container >
 
         <Box display='flex' justifyContent="space-between" alignItems="center" sx={{ p:"16px"}}>
@@ -74,30 +74,13 @@ const Profile = ({picture, name, expertises, interests, description}) => {
                   )
                 })
               }
-            {/* <Box>
-              <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
-              <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus m?</Typography>
-            </Box>
 
-            <Box>
-              <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
-              <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus molestiae dolores delectus enim?</Typography>
-            </Box>
 
-            <Box>
-              <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
-              <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus molestiae dolores delectus enim?</Typography>
-            </Box> */}
-{/* 
-            <Box>
-              <Typography sx={{mb:"12px"}}>Gardening, 10 years experience</Typography>
-              <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, cum. Rem ullam laboriosam soluta quibusdam, voluptatibus molestiae dolores delectus enim?</Typography>
-            </Box> */}
             </Box>
           </Box>
         </Box>
       </Container>
-    </Box>
+    </div>
   )
 }
 

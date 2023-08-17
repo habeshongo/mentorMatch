@@ -28,7 +28,7 @@ const Profile = () => {
     user &&
     data.user &&
     !isLoading && (
-      <>
+      <div style={{ minHeight: "100vh" }}>
         <NavBar />
         <div className="sidebar-layout">
           <div className="sidebar">
@@ -49,7 +49,7 @@ const Profile = () => {
             picture={data.user.picture}
           />
         </div>
-      </>
+      </div>
     )
   );
 };
